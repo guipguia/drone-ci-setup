@@ -33,6 +33,7 @@ services:
       - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
       - DRONE_DATABASE_DATASOURCE=${DRONE_DATABASE_DATASOURCE}
       - DRONE_USER_FILTER=${DRONE_USER_FILTER}
+      - DRONE_DATABASE_DRIVER=${DRONE_DATABASE_DRIVER}
     volumes: 
       - ./drone-data:/var/lib/drone/
       - /var/run/docker.sock:/var/run/docker.sock
