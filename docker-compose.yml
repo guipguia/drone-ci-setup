@@ -4,6 +4,8 @@ services:
   drone-db:
     container_name: drone_db
     image: postgres:12
+    networks:
+      - drone
     ports:
       - '5432:5432'
     volumes:
@@ -30,7 +32,7 @@ services:
       - DRONE_GITHUB_CLIENT_SECRET=${DRONE_GITHUB_CLIENT_SECRET}
       - DRONE_SERVER_HOST=${DRONE_SERVER_HOST}
       - DRONE_SERVER_PROTO=${DRONE_SERVER_PROTO}
-      - DRONE_DATABASE_DATASOURCE=${DRONE_DATABASE_DATASOURCE}
+      - DRONE_DATABASE_DATASOURCE=postgres://${DRONE_POSTGRES_USER}:${DRONE_POSTGRES_PASS}@drone_db:5432/${POSTGRES_DB}?sslmode=disable
       - DRONE_USER_FILTER=${DRONE_USER_FILTER}
       - DRONE_DATABASE_DRIVER=${DRONE_DATABASE_DRIVER}
     volumes: 
