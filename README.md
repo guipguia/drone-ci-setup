@@ -16,11 +16,6 @@
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
 
-[![MIT License][license-shield]][license-url]
-
-
-
-
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -65,7 +60,7 @@ If you don't please visit [get docker](https://docs.docker.com/get-docker/)
    ```sh
    git clone https://github.com/gpguia/drone-ci-setup.git
    ```
-3. Setup your nginx server, click [here](https://github.com/gpguia/gpguia/tree/master/docs/nginx_setup.md) to see how.
+3. Setup your nginx server, click [here](https://github.com/gpguia/drone-ci-setup/blob/master/docs/nginx_setup.md) to see how.
 
 4. Setup .env.template file, for more info please read commentaries inside the file.
 
