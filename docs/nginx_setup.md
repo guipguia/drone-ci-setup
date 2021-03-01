@@ -46,7 +46,7 @@ sudo systemctl restart nginx
 ``Im assuming you have certbot installed, if you do not, please click`` [here](https://certbot.eff.org/docs/install.html)
 
 ```sh
-sudo cerbot --nginx -d drone.example.com
+sudo certbot --nginx -d drone.example.com
 ```
 
 At this point your nginx server is ready to proxy our drone http server using let's encrypt ssl to the web 😆
