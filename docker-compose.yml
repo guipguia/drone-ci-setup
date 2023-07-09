@@ -16,6 +16,9 @@ services:
       DRONE_RPC_SECRET: ${DRONE_RPC_SECRET}
       DRONE_SERVER_HOST: ${DRONE_SERVER_HOST}
       DRONE_SERVER_PROTO: ${DRONE_SERVER_PROTO}
+      DRONE_DATABASE_DRIVER: ${DRONE_DATABASE_DRIVER}
+      DRONE_DATABASE_DATASOURCE: postgres://${DRONE_POSTGRES_USER}:${DRONE_POSTGRES_PASS}@drone-db:5432/drone_db?sslmode=disable
+      DRONE_REDIS_CONNECTION: redis://drone-redis:6379
 
   drone-runner:
     container_name: drone-runner
@@ -34,6 +37,23 @@ services:
       - DRONE_RPC_SECRET=${DRONE_RPC_SECRET}
     depends_on:
       - drone-server
+
+  drone-db:
+    image: postgres:15.3
+    environment:
+      - POSTGRES_USER=${DRONE_POSTGRES_USER}
+      - POSTGRES_PASSWORD=${DRONE_POSTGRES_PASS}
+      - POSTGRES_DB=${POSTGRES_DB}
+    volumes:
+      - ./pgdata:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    
+  drone-redis:
+    image: redis
 
 networks:
   drone:
