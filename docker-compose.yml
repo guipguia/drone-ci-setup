@@ -11,7 +11,7 @@ services:
       - "4443:443"
     restart: always
     depends_on:
-      drone_db:
+      drone-db:
         condition: service_healthy
     environment:
       DRONE_GITHUB_CLIENT_ID: ${DRONE_GITHUB_CLIENT_ID}
