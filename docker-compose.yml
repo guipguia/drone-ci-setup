@@ -48,6 +48,8 @@ services:
       - POSTGRES_USER=${DRONE_POSTGRES_USER}
       - POSTGRES_PASSWORD=${DRONE_POSTGRES_PASS}
       - POSTGRES_DB=${POSTGRES_DB}
+    networks:
+      - drone
     volumes:
       - ./pgdata:/var/lib/postgresql
     healthcheck:
@@ -59,6 +61,8 @@ services:
   drone-redis:
     container_name: drone-redis
     image: redis
+    networks:
+      - drone
 
 networks:
   drone:
